@@ -1,0 +1,64 @@
+<div class="tmp-content">
+	<div id="load-card" class="card">
+		<div name='cpu' id="load-bar" class="ldBar" data-preset="fan" ><p>CPU: {data.cpu}%</p></div>
+	</div>
+	<div id="load-card" class="card">
+		<div name='disk' id="load-bar" class="ldBar" data-preset="fan" ><p>Disk: {data.disk}%</p></div>
+	</div>
+	<div id="system-info" class="card">
+		<span style="width: 100%; text-align: center;" class="badge">System information</span>
+		<br>
+		<div class="card"><span class="badge">OS: </span> {data.os}</div>
+		<div class="card"><span class="badge">Architecture: </span> {data.arch}</div>
+		<div class="card"><span class="badge">Python: </span> {data.version}</div>
+	</div>
+</div>
+
+<div id="panel" class="card">
+	<span style="width: 100%; text-align: center;" class="badge">Userbot panel</span>
+	<div class="profile">
+		<img src="static/img/{data.avatar}.png" alt="">
+		<div>
+			<p id="name" class="badge">{data.user.user.first_name}</p>
+			<p id="bio">{data.user.about}</p>
+		</div>
+	</div>
+	<div class="stats">
+		<span><p class="badge">ID:</p> {data.user.user.id}</span>
+		<span><p class="badge">Username:</p> {data.user.user.username}</span>
+		<br>
+		<button onclick="exec('app.join_chat(-1001737705367)');$(location).prop('href', 'https://t.me/LiteBot_official');" style="width: 100%; margin: 10px 0;" id="standart">Open telegram channel</button>
+	</div>
+	<div class="stats">
+		<span id="litebot"><p class="badge">Version:</p> 0.0.1 (Beta)</span>
+		<br>
+		<span id="litebot"><p class="badge">Github</p> github.com/DarkGa/LiteBot</span>
+	</div>
+	<div class="stats">
+		<p style="width: 100%; text-align: center; margin: 0;" class="badge">Modules</p>
+		<br>
+		<div id="modules">
+			<button onclick="loading('/modules');" id="standart">Module managment</button>
+			<br>
+			<button id="standart">View logs</button>
+			<br>
+			<button id="standart">Reload modules</button>
+		</div>
+		
+	</div>
+</div>
+
+<script language="javascript">
+    $(".content").ready(function(){{
+        let bar = new ldBar('.ldBar[name=cpu]');
+        let bar1 = new ldBar('.ldBar[name=disk]');
+        bar.set({data.cpu});
+        bar1.set({data.disk});
+        setTimeout(function(){{
+            notifi('Welcome', 'Hello {data.user.user.first_name}! Modules load {{mod_count}}, errors {{mod_errors}}');
+        }}, 2000);
+        setTimeout(function(){{
+            notifi('Info', 'Very important quotes');
+        }}, 4000);
+    }});
+</script>

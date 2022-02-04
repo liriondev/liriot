@@ -1,0 +1,28 @@
+{% extends "includes/template.html" %}
+{% block content %}
+
+<div class="form_center">
+
+    <h1 id="load-0">Liriot</h1>
+
+    <input name="api_id" id="load-1" type="text" placeholder="api id">
+    <input name="api_hash" id="load-2" type="text" placeholder="api hash">
+    <input name="password" id="load-3" type="password" placeholder="new password">
+
+    <select id="load-4" required>
+        <option value="Select" disabled selected hidden>Select Language</option>
+        <option value="en">English</option>
+        <option value="ru">Russian</option>
+    </select>
+
+    <button onclick="create();" style="margin-top: 40px;" id="standart">Create app</button>
+
+</div>
+
+<script language="javascript">
+    setTimeout(function(){
+        notifi('Info', 'To get the api id and api hash, log into your account at <a style="text-decoration: none; color: white;" href="https://my.telegram.org">my.telegram.org</a> and create an app if you haven\'t already.');
+    }, 3000)
+</script>
+
+{% endblock %}

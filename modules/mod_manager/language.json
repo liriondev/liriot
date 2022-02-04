@@ -1,0 +1,10 @@
+{
+  "ru": {
+    "mod_list": "**Список установленных модулей:**",
+    "reload": "**Перезагрузка модулей завершена.**"
+  },
+  "en": {
+    "mod_list": "**List installing modules:**",
+    "reload": "**Reload modules ended.**"
+  }
+}

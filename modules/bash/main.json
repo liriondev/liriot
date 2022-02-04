@@ -1,0 +1,9 @@
+{
+ "load_event":"msg",
+ "public": false,
+ "module_name":"Bash",
+ "module_commands": ["bash"],
+ "module_info":"Executing bash code",
+ "module_help":"bash (code) - for execute.",
+ "module_version":"0.1"
+}

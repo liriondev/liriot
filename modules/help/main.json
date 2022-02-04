@@ -1,0 +1,9 @@
+{
+  "load_event": "msg",
+  "public": false,
+  "module_name": "Help",
+  "module_commands": ["help"],
+  "module_info": "Output info and documentation for module.",
+  "module_help": "help (module) - output full info for module.",
+  "module_version": "0.1"
+}

@@ -1,0 +1,15 @@
+{
+    "ru": {
+        "name": "Название",
+        "info": "Информация",
+        "help": "Документация",
+        "error": "**Модуль не обнаружен, либо имеет критические ошибки.**"
+    },
+    "en": {
+        "name": "Title",
+        "info": "Info",
+        "help": "Documentation",
+        "error": "**Module not found, or critical error.**"
+    }
+    
+}

@@ -1,0 +1,11 @@
+{% extends "includes/template.html" %}
+{% block content %}
+<div class="loading">
+	<div dot-color="red" class="dot-spin"></div>
+</div>
+<script>
+	setTimeout(function(){
+		load_panel('home_preloader');
+	}, 2000)
+</script>
+{% endblock %}

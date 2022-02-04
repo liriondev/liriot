@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyrogram = "*"
+tgcrypto = "*"
+python-box = "*"
+meval = "*"
+npyscreen = "*"
+flask = "*"
+psutil = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3"

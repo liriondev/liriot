@@ -1,0 +1,9 @@
+{
+ "load_event":"msg",
+ "public": false,
+ "module_name":"Modules",
+ "module_commands": ["list", "reload"],
+ "module_info":"Management for your modules.",
+ "module_help":"list - list your modules and commands.",
+ "module_version":"0.1"
+}

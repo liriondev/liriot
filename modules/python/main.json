@@ -1,0 +1,9 @@
+{
+  "load_event": "msg",
+  "public": false,
+  "module_name": "Python",
+  "module_commands": ["eval", "math"],
+  "module_info": "Executing python code directly from the module.",
+  "module_help": "eval (code) - for executing python code.\nmath (code) - for performing mathematical calculations.",
+  "module_version": "0.1"
+}
