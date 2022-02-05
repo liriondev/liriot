@@ -1,4 +1,18 @@
 {
-  "ru": {},
-  "en": {}
+  "ru": {
+  	"banned": "**Пользователь заблокирован**",
+  	"failed_ban": "**Не удалось заблокировать**",
+  	"kicked": "**Пользователь был исключен из группы**",
+  	"failed_kick": "**Не удалось исключить пользователя**",
+  	"muted": "**Пользователь замьючен**",
+  	"failed_mute": "**Не удалось замьютить пользователя**"
+	},
+  "en": {
+  	"banned": "**The user is blocked**",
+  	"failed_ban": "**Failed to block**",
+  	"kicked": "**The user was excluded from the group**",
+  	"failed_kick": "**Failed to exclude user**",
+  	"muted": "**User is muted**",
+  	"failed_mute": "**Failed to mute user**"
+  }
 }

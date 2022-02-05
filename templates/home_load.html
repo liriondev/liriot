@@ -27,22 +27,19 @@
 		<span><p class="badge">ID:</p> {data.user.user.id}</span>
 		<span><p class="badge">Username:</p> {data.user.user.username}</span>
 		<br>
-		<button onclick="exec('app.join_chat(-1001737705367)');$(location).prop('href', 'https://t.me/LiteBot_official');" style="width: 100%; margin: 10px 0;" id="standart">Open telegram channel</button>
+		<button onclick="exec('app.join_chat(-1001574627424)');$(location).prop('href', 'https://t.me/lirion_dev');" style="width: 100%; margin: 10px 0;" id="standart">Open telegram channel</button>
 	</div>
 	<div class="stats">
 		<span id="litebot"><p class="badge">Version:</p> 0.0.1 (Beta)</span>
 		<br>
-		<span id="litebot"><p class="badge">Github</p> github.com/DarkGa/LiteBot</span>
+		<span id="litebot"><p class="badge">Github</p> github.com/liriondev/liriot</span>
 	</div>
 	<div class="stats">
 		<p style="width: 100%; text-align: center; margin: 0;" class="badge">Modules</p>
 		<br>
 		<div id="modules">
 			<button onclick="loading('/modules');" id="standart">Module managment</button>
-			<br>
-			<button id="standart">View logs</button>
-			<br>
-			<button id="standart">Reload modules</button>
+			<button onclick="exec('loader.reload_all()');notifi('Info', 'Reloading modules complete!')" id="standart">Reload modules</button>
 		</div>
 		
 	</div>
@@ -54,11 +51,5 @@
         let bar1 = new ldBar('.ldBar[name=disk]');
         bar.set({data.cpu});
         bar1.set({data.disk});
-        setTimeout(function(){{
-            notifi('Welcome', 'Hello {data.user.user.first_name}! Modules load {{mod_count}}, errors {{mod_errors}}');
-        }}, 2000);
-        setTimeout(function(){{
-            notifi('Info', 'Very important quotes');
-        }}, 4000);
     }});
 </script>

@@ -1,4 +1,4 @@
-import os, hashlib, json, sys
+import os, hashlib, json, sys, asyncio
 from box import Box
 from flask import Flask, render_template, redirect, url_for, request, make_response
 from threading import Thread
@@ -42,7 +42,7 @@ def login():
 
 @web.route("/exec")
 def execute():
-	if check_cookies(request): return os.popen(request.args.get('command'))
+	if check_cookies(request): return 'ok' if eval(request.args.get('command')) else 'error'
 
 @web.route("/home")
 def home():
@@ -99,12 +99,24 @@ if os.path.isfile('settings.json'):
 
 	@app.on_message(filters.text)
 	async def main(client, m) -> None:
-		if not utils.me: utils.me=await app.get_me()
+		
+		if not utils.me:
+			utils.me=await app.get_me()
+			await loader.load('modules_daemon').init(app,utils.me)
+			
 		args=m.text.split(' ') if len(m.text.split(' ')) > 0 else [m.text, ' ']
+		
 		for mod in loader.list():
-			if args[0][1:] in loader.load(mod).info.module_commands and not loader.load(mod).info.public and loader.load(mod).info.load_event=='msg':
-				await loader.load(mod).init(app,m,utils.me,args)
-				break
+			
+			if loader.load(mod).info.public and m.from_user.id == me.id:
+				if args[0][1:] in loader.load(mod).info.module_commands and loader.load(mod).info.load_event=='msg':
+					await loader.load(mod).init(app,m,utils.me,args)
+					break
+
+			else:
+				if args[0][1:] in loader.load(mod).info.module_commands and loader.load(mod).info.load_event=='msg':
+					await loader.load(mod).init(app,m,utils.me,args)
+					break
 
 	if __name__=='__main__':
 		Thread(target=web.run, args=('0.0.0.0', 5000), daemon=True).start()

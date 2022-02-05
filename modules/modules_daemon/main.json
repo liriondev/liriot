@@ -1,0 +1,9 @@
+{
+ "load_event":"none",
+ "public": false,
+ "module_name":"modules_daemon",
+ "module_commands": [],
+ "module_info":"Background modules daemon",
+ "module_help":"",
+ "module_version":"0.1"
+}
