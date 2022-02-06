@@ -4,9 +4,9 @@
 	<div class="mod_info">
 		<div class="card"><span class="badge">Load event: </span> {mod.load_event}</div>
 		<div class="card"><span class="badge">Public: </span> {mod.public}</div>
-		<div class="card"><span class="badge">Commands: </span> {mod.module_commands}</div>
+		<div class="card"><span class="badge">Commands: </span> {commands}</div>
 		<div class="card"><span class="badge">Info: </span> {mod.module_info}</div>
-		<div class="card"><span class="badge">Help: </span> {mod.module_help}</div>
+		<div class="card"><span class="badge">Help: </span> {help_}</div>
 		<button onclick="reload('{raw_name}');notifi('Info', 'Reloading complete');" id="standart">Reload</button>
 		<button onclick="deleted('{raw_name}');notifi('Info', 'Deleted complete');" id="standart" id="standart">Delete</button>
 	</div>

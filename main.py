@@ -2,9 +2,16 @@ import os, hashlib, json, sys, asyncio
 from box import Box
 from flask import Flask, render_template, redirect, url_for, request, make_response
 from threading import Thread
+from core.utils import DataBase
+from tabulate import tabulate
+from waitress import serve
 
 web = Flask(__name__)
 web.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+db=DataBase()
+if not os.path.exists('databases/main.db'):
+	db.create('info', (db.Column('logo'),))
 
 def check_cookies(request):
 	try:
@@ -57,15 +64,22 @@ def modules():
 def preloading():
 	if check_cookies(request):
 		if request.args.get('data')=='home_preloader':
-			try: app.download_media(app.get_profile_photos("me", limit=1)[0].file_id, file_name="static/img/ava.png"); ava=True
-			except: ava=False
+			if not utils.me: utils.me=app.get_me()
+			photo=app.get_profile_photos("me")
+			if photo:
+				tmp=db.select('info', 'logo')[list(db.select('info', 'logo'))[-1]].logo if db.select('info', 'logo') else None
+				if photo[-1].file_unique_id!=tmp:
+					app.download_media(app.get_profile_photos("me", limit=1)[0].file_id, file_name="static/img/ava.png")
+					db.insert('info', 'logo', f'{photo[-1].file_unique_id}')
+				ava=True
+			else: ava=False
 			data=Box({
 				'version': sys.version.split(' ')[0],
 				'cpu': int(psutil.cpu_percent(4)),
 				'disk': int(psutil.disk_usage('/').percent),
 				'os': os.uname().sysname,
 				'arch': os.uname().machine,
-				'user': app.send(functions.users.GetFullUser(id=app.resolve_peer(1901590163))),
+				'user': app.send(functions.users.GetFullUser(id=app.resolve_peer(utils.me.id))),
 				'avatar': 'ava' if ava else 'logo'
 			})
 			tmp=open('templates/home_load.html', 'r').read()
@@ -75,7 +89,7 @@ def preloading():
 			tmp=open('templates/list_mod.html', 'r').read()
 			i=0
 			for mod in loader.list():
-				out+=tmp.format(mod=loader.load(mod).info, raw_name=mod, index=i)
+				out+=tmp.format(mod=loader.load(mod).info, help_=loader.load(mod).info.module_help.replace('\n', '<br>'), commands=', '.join(loader.load(mod).info.module_commands), raw_name=mod, index=i)
 				i+=1
 			out+=f'</div>\n<script>for(let i=0;i<{i};i++){{$("#info-"+i).css("height","40px")}}'
 			return out
@@ -119,7 +133,10 @@ if os.path.isfile('settings.json'):
 					break
 
 	if __name__=='__main__':
-		Thread(target=web.run, args=('0.0.0.0', 5000), daemon=True).start()
+		print(tabulate([["liri0t", "Addres web panel", "Modules"], ["v-0.1-beta", "127.0.0.1:5000", len(loader.list())]], tablefmt="grid"))
+		Thread(target=serve, args=(web,), kwargs={'host': '0.0.0.0', 'port': 5000}, daemon=True).start()
 		app.run()
 		
-else: web.run(debug=True, host='0.0.0.0')
+else:
+	print(tabulate([["liri0t", "Addres web panel", "Modules"], ["v-0.1-beta", "127.0.0.1:5000", len(loader.list())]], tablefmt="grid"))
+	serve(web, host='0.0.0.0')

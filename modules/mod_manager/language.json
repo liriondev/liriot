@@ -1,10 +1,14 @@
 {
   "ru": {
     "mod_list": "**Список установленных модулей:**",
-    "reload": "**Перезагрузка модулей завершена.**"
+    "reload": "**Перезагрузка модулей завершена.**",
+    "share_not_found": "**Модуль не обнаржуен**",
+    "share_help": "Введите ``` .help mod_manager ``` чтобы получить помощь"
   },
   "en": {
     "mod_list": "**List installing modules:**",
-    "reload": "**Reload modules ended.**"
+    "reload": "**Reload modules ended.**",
+    "share_not_found": "**Module not found**",
+    "share_help": "Type ``` .help mod_manager ``` to get help"
   }
 }

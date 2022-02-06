@@ -1,4 +1,5 @@
 let noti = 0;
+let tmp = 1;
 
 function hashCode (str){
   let hash = 0;
@@ -86,21 +87,24 @@ function loading(url){
   $('.content').append('<div style="opacity: 0;" class="loading"><div dot-color="red" class="dot-spin"></div></div>');
   setTimeout(function(){
     $('.loading').css('opacity', '1');
-  },500);
+  },0);
   setTimeout(function(){
     location.href=url;
-  },1500)
+    setTimeout(function(){
+    	$('.loading').css('opacity', '0');
+  	},1200)
+  },1000)
 }
 
 function load_panel(data){
-  $.get({
-    url: '/get',
-    data: {'data': data}
-  }).then(function(data){
-    $(".content").append(data);
-    $('.loading').css('opacity', '0');
-    setTimeout(function(){$('.loading').remove();},1500);
-  });
+ $.get({
+	  url: '/get',
+	  data: {'data': data}
+	}).then(function(data){
+	  $(".content").append(data);
+	  $('.loading').css('opacity', '0');
+   setTimeout(function(){$('.loading').remove();},500);
+	});
 }
 
 function mod_info(index){

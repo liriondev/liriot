@@ -10,7 +10,7 @@ async def mod_manager(app,m,me,args,language):
 		out=''
 		for mod in loader.list():
 			module=loader.load(mod).info
-			out+=f'\n**{module.module_name}** (```{mod}```): {", ".join(module.module_commands)}'
+			out+=f'\n╭ **{module.module_name}** (```{mod}```)\n╰> {", ".join(module.module_commands) if module.module_commands else "*none*"}\n'
 		await m.edit(language.mod_list+'\n'+out)
 		
 	if args[0][1:]=='reload':
@@ -35,3 +35,11 @@ async def mod_manager(app,m,me,args,language):
 			await m.edit('**Installing complete**')
 		
 		else: await m.edit('**No userbot archive**')
+	
+	if args[0][1:]=='share':
+		try:
+			if os.path.exists(f'modules_tar/{args[1]}.tar.gz'):
+				await m.delete()
+				await app.send_document(f'mofules_tar/{args[1]}.tar')
+			else: await m.edit(language.share_not_found)
+		except: await m.edit(language.share_help)

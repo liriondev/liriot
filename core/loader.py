@@ -12,7 +12,7 @@ class loader:
 		
 	def reload(name:str) -> None:
 		try: del sys.modules['modules.'+name]
-		except Exception as e: print(e)
+		except: pass
 		loader.load(name)
 	
 	def reload_all() -> None:

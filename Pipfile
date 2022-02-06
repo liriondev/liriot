@@ -4,13 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyrogram = "*"
 tgcrypto = "*"
 python-box = "*"
 meval = "*"
-npyscreen = "*"
 flask = "*"
 psutil = "*"
+waitress = "*"
+pyrogram = "*"
+tabulate = "*"
 
 [dev-packages]
 

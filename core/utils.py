@@ -7,7 +7,6 @@ class utils:
 
 def language(func):
   async def wrapper(app,m,me,args):
-    print(f'modules/{func.__name__}/language.json')
     tmp=Box(json.load(open(f'modules/{func.__name__}/language.json','r')))
     language=tmp[utils.config.language]
     await func(app,m,me,args,language)
@@ -27,7 +26,7 @@ class DataBase:
   def insert(self, table_name:str, column_name:str, column_value:str) -> None:
     conn = sqlite3.connect(self.db_name)
     cursor = conn.cursor()
-    cursor.execute('''INSERT INTO '''+table_name+''' ('''+column_name+''') VALUES ('''+column_value+''')''')
+    cursor.execute(f'INSERT INTO {table_name} ({column_name}) VALUES ("{column_value}")')
     conn.commit()
     cursor.close()
   
