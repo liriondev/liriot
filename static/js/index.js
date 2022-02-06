@@ -87,7 +87,7 @@ function loading(url){
   $('.content').append('<div style="opacity: 0;" class="loading"><div dot-color="red" class="dot-spin"></div></div>');
   setTimeout(function(){
     $('.loading').css('opacity', '1');
-  },0);
+  },500);
   setTimeout(function(){
     location.href=url;
     setTimeout(function(){

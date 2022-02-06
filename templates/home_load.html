@@ -19,13 +19,13 @@
 	<div class="profile">
 		<img src="static/img/{data.avatar}.png" alt="">
 		<div>
-			<p id="name" class="badge">{data.user.users[0].first_name}</p>
-			<p id="bio">{data.user.full_user.about}</p>
+			<p id="name" class="badge">{data.user.user.first_name}</p>
+			<p id="bio">{data.user.about}</p>
 		</div>
 	</div>
 	<div class="stats">
-		<span><p class="badge">ID:</p> {data.user.users[0].id}</span>
-		<span><p class="badge">Username:</p> {data.user.users[0].username}</span>
+		<span><p class="badge">ID:</p> {data.user.user.id}</span>
+		<span><p class="badge">Username:</p> {data.user.user.username}</span>
 		<br>
 		<button onclick="exec('app.join_chat(-1001574627424)');$(location).prop('href', 'https://t.me/lirion_dev');" style="width: 100%; margin: 10px 0;" id="standart">Open telegram channel</button>
 	</div>
