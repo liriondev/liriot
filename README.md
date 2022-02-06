@@ -19,3 +19,53 @@
 		<img src="https://img.shields.io/badge/telegram-open-blue?style=plastic">
 	</a>
 </p>
+
+# Liriot modern userbot
+
+Modern userbot for your telegram account
+
+## Getting Started
+
+### Prerequisites
+
+You need to install the software:
+
+```
+apt install python3 python3-pip git
+```
+
+And install pipenv
+
+```
+pip install pipenv
+```
+
+### Installing
+
+#### Copy git and change work directory
+
+```
+git clone https://github.com/liriondev/liriot.git; cd liriot
+```
+
+#### Create virtual environment and install requirements
+
+```
+pipenv install
+```
+
+## Running
+
+```
+pipenv run python3 main.py
+```
+
+## Authors
+
+* **Li** -  [Telegram](https://t.me/liriondev)
+
+## License
+
+This project is licensed under the GNU General Public License v3.0
+
+ - see the [LICENSE.md](LICENSE.md) file for details
