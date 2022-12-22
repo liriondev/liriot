@@ -68,7 +68,7 @@ def preloading():
 		if photo:
 			tmp=db.select('info', 'logo')[list(db.select('info', 'logo'))[-1]].logo if db.select('info', 'logo') else None
 			if photo[-1].file_unique_id!=tmp:
-				app.download_media(app.get_chat_photos("me", limit=1)[0].file_id, file_name="static/img/ava.png")
+				app.download_media([t for t in app.get_chat_photos("me", limit=1)][0].file_id, file_name="static/img/ava.png")
 				db.insert('info', 'logo', f'"{photo[-1].file_unique_id}"')
 			ava=True
 		else: ava=False
