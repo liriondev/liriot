@@ -1,0 +1,10 @@
+{
+ "load_event":"msg",
+ "public": true,
+ "module_name":"Quotes",
+ "module_commands": ["q"],
+ "module_info":"Create quote from reply message.",
+ "module_help":"q - create quote from reply message.\nq (text) - create quote custom text from reply message.",
+ "module_version":"0.1",
+ "web": false
+}

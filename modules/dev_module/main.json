@@ -1,0 +1,10 @@
+{
+ "load_event":"msg",
+ "public": false,
+ "module_name":"Devel tools",
+ "module_commands": ["pcode"],
+ "module_info":"Devel tools for userbot.",
+ "module_help":"pcode (language) (code)/reply - generate code png.",
+ "module_version":"0.1",
+ "web": true
+}

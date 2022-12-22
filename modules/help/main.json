@@ -5,5 +5,6 @@
   "module_commands": ["help"],
   "module_info": "Output info and documentation for module.",
   "module_help": "help (module) - output full info for module.",
-  "module_version": "0.1"
+  "module_version": "0.1",
+  "web": false
 }

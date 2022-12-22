@@ -5,5 +5,6 @@
  "module_commands": ["ban", "kick", "mute"],
  "module_info":"Auxiliary module for administration",
  "module_help":"ban - reply to user msg or add argument <username/userID>\nkick - reply to user msg or add argument <username/userID>\nwarn - reply to user msg\nmute - reply to user msg",
- "module_version":"0.1"
+ "module_version":"0.1",
+ "web": false
 }

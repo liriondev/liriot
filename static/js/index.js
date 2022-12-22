@@ -39,15 +39,14 @@ function notifi(title,msg){
       $(this).css('displanotifiy', 'none')
     }
   });
-    
-  $('body').append(`<notifi id='notifi-${noti}'><p id='title'>${title}</p><button onclick='close_notifi(${noti});' id='close'>✘</button>${msg}</notifi>`);
+  $('body').append(`<notifi id='notifi-${noti}' class='bgc-${title}'><p onclick='close_notifi(${noti});' id='close'>x</p>${msg}</notifi>`);
   setTimeout(function(){
     $(`#notifi-${noti}`).css({
       'opacity': '1',
       'margin-top': '0'
     });
     noti++;
-  }, 500);
+  }, 100); 
 }
 
 function close_notifi(index){
@@ -63,9 +62,13 @@ function close_notifi(index){
   $('notifi').each(function(i){
     if(parseInt(this.id.replace('notifi-',''))<index){
       $(this).css({
-        'margin-top': `${parseInt($(this).css('margin-top'))+70}px`,
-        'opacity': `${parseFloat($(this).css('opacity'))+0.5}`
+          'margin-top': `${parseInt($(this).css('margin-top'))+70}px`
       });
+       if(parseFloat($(`#notifi-${parseInt(this.id.replace('notifi-',''))+1}`).css('opacity'))>=0.5) {
+        $(this).css({
+          'opacity': `${parseFloat($(this).css('opacity'))+0.5}`
+        });
+      }
       if(parseFloat($(this).css('opacity'))>=0){
         $(this).css('displanotifiy', 'block')
       }
@@ -84,15 +87,13 @@ function exec(cmd){
 }
 
 function loading(url){
-  $('.content').append('<div style="opacity: 0;" class="loading"><div dot-color="red" class="dot-spin"></div></div>');
+  $('.content').append('<div style="opacity: 0;" class="loading"><img src="static/img/grid.svg"></div>');
   setTimeout(function(){
     $('.loading').css('opacity', '1');
-  },500);
+  },100);
   setTimeout(function(){
     location.href=url;
-    setTimeout(function(){
-    	$('.loading').css('opacity', '0');
-  	},1200)
+  	setTimeout(function(){$('.loading').remove();},500);
   },1000)
 }
 
@@ -103,16 +104,8 @@ function load_panel(data){
 	}).then(function(data){
 	  $(".content").append(data);
 	  $('.loading').css('opacity', '0');
-   setTimeout(function(){$('.loading').remove();},500);
+    setTimeout(function(){$('.loading').remove();},1000);
 	});
-}
-
-function mod_info(index){
-  if($(`.card[id=info-${index}]`).css('height')=='40px'){
-    $(`.card[id=info-${index}]`).css('height', 'max-content');
-  } else {
-    $(`.card[id=info-${index}]`).css('height', '40px');
-  }
 }
 
 function reload(mod){
@@ -130,7 +123,7 @@ function login(){
     if(data=='Succesfull'){
       loading('/home');
     } else {
-      notifi('Error', data);
+      notifi('danger', data);
     }
   })
 }
@@ -151,7 +144,7 @@ function create(){
       cache: false
     }).then(function(data){
       if(data=='Succesfull'){
-        notifi('Info', 'Created app succesfull, restart LiteBot and login for phone number.');
+        notifi('succesfull', 'Created app succesfull, restart LiteBot and login for phone number.');
       }
     });
   } else {alert("Enter all data");}

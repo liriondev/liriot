@@ -1,48 +1,39 @@
-<div class="tmp-content">
-	<div id="load-card" class="card">
-		<div name='cpu' id="load-bar" class="ldBar" data-preset="fan" ><p>CPU: {data.cpu}%</p></div>
-	</div>
-	<div id="load-card" class="card">
-		<div name='disk' id="load-bar" class="ldBar" data-preset="fan" ><p>Disk: {data.disk}%</p></div>
-	</div>
-	<div id="system-info" class="card">
-		<span style="width: 100%; text-align: center;" class="badge">System information</span>
-		<br>
-		<div class="card"><span class="badge">OS: </span> {data.os}</div>
-		<div class="card"><span class="badge">Architecture: </span> {data.arch}</div>
-		<div class="card"><span class="badge">Python: </span> {data.version}</div>
-	</div>
+<div class="col-12">
+    <div style="width: 100%;" class="card bgc-dark" id="navbar">
+        <span class="badge bgc-succesfull">{data.release}</span>
+        <span class="badge bgc-info"><a href='https://t.me/lirion_dev' style="color: white;"><i style="margin-right: 10px;" class="bi bi-telegram"></i>Telegram</a></span>
+        <span class="badge bgc-light"><a href='https://github.com/liriondev' style="color: black;"><i class="bi bi-github"> GitHub</i></a></span>
+    </div>
 </div>
 
-<div id="panel" class="card">
-	<span style="width: 100%; text-align: center;" class="badge">Userbot panel</span>
-	<div class="profile">
-		<img src="static/img/{data.avatar}.png" alt="">
-		<div>
-			<p id="name" class="badge">{data.user.user.first_name}</p>
-			<p id="bio">{data.user.about}</p>
-		</div>
-	</div>
-	<div class="stats">
-		<span><p class="badge">ID:</p> {data.user.user.id}</span>
-		<span><p class="badge">Username:</p> {data.user.user.username}</span>
-		<br>
-		<button onclick="exec('app.join_chat(-1001574627424)');$(location).prop('href', 'https://t.me/lirion_dev');" style="width: 100%; margin: 10px 0;" id="standart">Open telegram channel</button>
-	</div>
-	<div class="stats">
-		<span id="litebot"><p class="badge">Version:</p> 0.0.1 (Beta)</span>
-		<br>
-		<span id="litebot"><p class="badge">Github</p> github.com/liriondev/liriot</span>
-	</div>
-	<div class="stats">
-		<p style="width: 100%; text-align: center; margin: 0;" class="badge">Modules</p>
-		<br>
-		<div id="modules">
-			<button onclick="loading('/modules');" id="standart">Module managment</button>
-			<button onclick="exec('loader.reload_all()');notifi('Info', 'Reloading modules complete!')" id="standart">Reload modules</button>
-		</div>
-		
-	</div>
+<div class="col-md-4">
+
+    <div class="card-max bgc-dark align-center">
+        <div style="display: inline-block; vertical-align: top;">
+            <img src="static/img/{data.avatar}.png" alt="" id="avatar" class="bgc-light">
+        </div>
+        <dic style="display: inline-block; margin: 10px;">
+            <h1 style="display: inline-block;">{data.user.first_name}</h1>
+            <br>
+            <div class="badge bgc-light">{data.user.username}</div>
+            <div class="badge bgc-light">{data.user.id}</div>
+        </dic>
+    </div>
+    
+    <div class="card-max bgc-dark align-center">
+      <button onclick='exec("loader.reload_all()");notifi("info", "Reloading finished");'>Reload all modules</button>
+      <button type="submit">Settings userbot</button>
+    </div>
+
+    <div class="card-max bgc-dark align-center">
+        <div name='cpu' id="load-bar" class="ldBar" data-preset="circle" ><p>CPU: {data.cpu}%</p></div>
+        <div name='disk' id="load-bar" class="ldBar" data-preset="circle" ><p>Disk: {data.disk}%</p></div>
+    </div>
+
+</div>
+
+<div class="col-md-8">
+    {modules}
 </div>
 
 <script language="javascript">

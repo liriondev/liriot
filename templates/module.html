@@ -1,0 +1,9 @@
+{% extends "includes/template.html" %}
+{% block content %}
+<div class="loading">
+	  <img src="/static/img/grid.svg" alt="">
+</div>
+<script>
+	$('document').ready(function(){load_panel('module/{{ mod }}');})
+</script>
+{% endblock %}

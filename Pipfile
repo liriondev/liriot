@@ -12,6 +12,8 @@ psutil = "*"
 waitress = "*"
 pyrogram = "*"
 tabulate = "*"
+pillow = "*"
+pygments = "*"
 
 [dev-packages]
 

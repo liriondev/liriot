@@ -1,13 +1,6 @@
-<div onclick="mod_info({index});" id="info-{index}" class="card">
-	<h4>{mod.module_name} ({raw_name})</h4>
-	<p>{mod.module_version}</p>
-	<div class="mod_info">
-		<div class="card"><span class="badge">Load event: </span> {mod.load_event}</div>
-		<div class="card"><span class="badge">Public: </span> {mod.public}</div>
-		<div class="card"><span class="badge">Commands: </span> {commands}</div>
-		<div class="card"><span class="badge">Info: </span> {mod.module_info}</div>
-		<div class="card"><span class="badge">Help: </span> {help_}</div>
-		<button onclick="reload('{raw_name}');notifi('Info', 'Reloading complete');" id="standart">Reload</button>
-		<button onclick="deleted('{raw_name}');notifi('Info', 'Deleted complete');" id="standart" id="standart">Delete</button>
-	</div>
+<div style="font-size: 24px; width: 100%;" class="bgc-dark card">
+	<div style="float: left;" class="badge">{mod.module_name}</div>
+	<div class="badge bgc-light">v-{mod.module_version}</div>
+	<div class="badge bgc-danger"><i class="bi bi-trash-fill"></i> Delete</div>
+	{web_panel_}
 </div>

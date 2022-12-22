@@ -1,9 +1,9 @@
 {% extends "includes/template.html" %}
 {% block content %}
 
-<div class="form_center">
+<div class="form_notifi align-center">
 
-    <h1 id="load-0">Liri0t</h1>
+    <h1>Liri0t</h1>
 
     <input name="api_id" id="load-1" type="text" placeholder="api id">
     <input name="api_hash" id="load-2" type="text" placeholder="api hash">
@@ -15,13 +15,13 @@
         <option value="ru">Russian</option>
     </select>
 
-    <button onclick="create();" style="margin-top: 40px;" id="standart">Create app</button>
+    <button class="bg-light" onclick="create();">Create app</button>
 
 </div>
 
 <script language="javascript">
     setTimeout(function(){
-        notifi('Info', 'To get the api id and api hash, log into your account at <a style="text-decoration: none; color: white;" href="https://my.telegram.org">my.telegram.org</a> and create an app if you haven\'t already.');
+        notifi('dark', 'To get the api id and api hash, log into your account at <a style="text-decoration: none; color: white;" href="https://my.telegram.org">my.telegram.org</a> and create an app if you haven\'t already.');
     }, 3000)
 </script>
 

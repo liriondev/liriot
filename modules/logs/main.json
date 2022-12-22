@@ -1,0 +1,10 @@
+{
+ "load_event":"msg",
+ "public": false,
+ "module_name":"Logs",
+ "module_commands": ["logs"],
+ "module_info":"View userbot logs.",
+ "module_help":"test",
+ "module_version":"0.1",
+ "web": true
+}
