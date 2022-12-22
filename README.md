@@ -62,7 +62,7 @@ pipenv run python3 main.py
 
 ## Authors
 
-* **Li** -  [Telegram](https://t.me/liriondev)
+* **Li** -  [Telegram](https://t.me/liFoxDev)
 
 ## License
 

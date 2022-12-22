@@ -10,7 +10,7 @@ async def mod_manager(app,m,me,args,language):
 		out=''
 		for mod in loader.list():
 			module=loader.load(mod).info
-			out+=f'\n╭ **{module.module_name}** (```{mod}```)\n╰> {", ".join(module.module_commands) if module.module_commands else "*none*"}\n'
+			out+=f'\n╭ **{module.module_name}** (`{mod}`)\n╰> {", ".join(module.module_commands) if module.module_commands else "*none*"}\n'
 		await m.edit(language.mod_list+'\n'+out)
 		
 	if args[0][1:]=='reload':

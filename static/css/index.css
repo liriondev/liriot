@@ -250,4 +250,11 @@ notifi #close {
   #navbar {
     text-align: center;
   }
+  notifi {
+    top: 100%;
+    left: 0;
+    transform: translate(0, -130%);
+    width: calc(100% - 20px);
+    margin-left: 10px;
+  }
 }

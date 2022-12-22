@@ -14,22 +14,22 @@ async def python(app,m,me,args,language):
       await m.edit(f'''
 **Code:**
 
-```{' '.join(args[1:])}```
+`{' '.join(args[1:])}`
 
 **Result:**
 
-```{mystdout.getvalue()}```
+`{mystdout.getvalue()}`
             ''')
     except:
       sys.stdout = old_stdout
       await m.edit(f'''
 **Code:**
 
-```{' '.join(args[1:])}```
+`{' '.join(args[1:])}`
 
 **Traceback:**
 
-```{traceback.format_exc()}```
+`{traceback.format_exc()}`
             ''')
   if args[0]=='.math':
     reply=m.reply_to_message
