@@ -27,6 +27,7 @@ async def quote(app,m,me,args,language):
     )
 
     tmp = BytesIO()
+    tmp.name = "test"
 
     quote = BytesIO(response.content)
     quote.name = "test"
