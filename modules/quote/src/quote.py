@@ -7,7 +7,7 @@ async def quote(app,m,me,args,language):
     avatar = await app.download_media([i async for i in app.get_chat_photos(m.reply_to_message.from_user.id)][0].file_id, in_memory=True)
     url = "https://quotes.fl1yd.su/generate"
     avatar = base64.b64encode(avatar.getvalue()).decode()
-    params = {
+    params = json.dumps({
         "messages": [
           {
                "text": "really",
@@ -17,7 +17,7 @@ async def quote(app,m,me,args,language):
         ],
         "quote_color": "#162330",
         "text_color": "#fff",
-    }
+    }, ensure_ascii=False)
 
     response = requests.post(
         url, 
