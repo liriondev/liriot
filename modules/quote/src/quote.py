@@ -10,7 +10,7 @@ async def quote(app,m,me,args,language):
         "messages": [
           {
                "text": reply.text,
-               "author": {"id": reply.from_user.id,"name": reply.from_user.first_name,"avatar":base64.b64encode(bytes(avatar.getbuffer()))},
+               "author": {"id": m.reply_to_message.from_user.id,"name": m.reply_to_message.from_user.first_name,"avatar":base64.b64encode(bytes(avatar.getbuffer()))},
                "reply": {}
            }
         ],
