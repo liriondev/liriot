@@ -11,8 +11,8 @@ async def quote(app,m,me,args,language):
     params = json.dumps({
         "messages": [
           {
-               "text": "really",
-               "author": {"id": m.reply_to_message.from_user.id,"name": f"{m.reply_to_message.from_user.first_name} {m.reply_to_message.from_user.last_name}","avatar":avatar},
+               "text": m.reply_to_message.text,
+               "author": {"id": m.reply_to_message.from_user.id,"name": f"{m.reply_to_message.from_user.first_name} {m.reply_to_message.from_user.last_name if m.reply_to_message.from_user.last_name else ''}","avatar":avatar},
                "reply": {}
            }
         ],
