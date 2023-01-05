@@ -28,7 +28,10 @@ async def quote(app,m,me,args,language):
 
     tmp = BytesIO()
 
-    image = Image.open(BytesIO(response.content))
+    quote = BytesIO(response.content)
+    quote.name = "test"
+
+    image = Image.open(quote)
     image.save(tmp, format="webp")
 
     await app.send_sticker(m.chat.id, tmp, reply_to_message_id=m.reply_to_message.id)
