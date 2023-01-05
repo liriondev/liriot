@@ -9,7 +9,7 @@ async def quote(app,m,me,args,language):
 	params = {
         "messages": [
           {
-               "text": reply.text,
+               "text": m.reply_to_message.text,
                "author": {"id": m.reply_to_message.from_user.id,"name": m.reply_to_message.from_user.first_name,"avatar":base64.b64encode(bytes(avatar.getbuffer()))},
                "reply": {}
            }
