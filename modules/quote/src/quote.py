@@ -1,6 +1,7 @@
 from core.utils import language
 import requests, json, base64
 from io import BytesIO
+from PIL import Image
 
 @language
 async def quote(app,m,me,args,language):
@@ -11,7 +12,7 @@ async def quote(app,m,me,args,language):
         "messages": [
           {
                "text": "really",
-               "author": {"id": m.reply_to_message.from_user.id,"name": m.reply_to_message.from_user.first_name,"avatar":avatar},
+               "author": {"id": m.reply_to_message.from_user.id,"name": f"{m.reply_to_message.from_user.first_name} {m.reply_to_message.from_user.last_name}","avatar":avatar},
                "reply": {}
            }
         ],
@@ -25,4 +26,9 @@ async def quote(app,m,me,args,language):
         headers={'Content-Type': 'application/json; charset=UTF-8'},
     )
 
-    await app.send_photo(m.chat.id, BytesIO(response.content))
+    tmp = BytesIO()
+
+    image = Image.open(BytesIO(response.content))
+    image.save(tmp, format="webp")
+
+    await app.send_sticker(m.chat.id, tmp, reply_to_message_id=m.reply_to_message.id)
