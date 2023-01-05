@@ -21,7 +21,7 @@ async def quote(app,m,me,args,language):
 
     response = requests.post(
         url, 
-        json=params,
+        json=params.encode("utf-8"),
         headers={'Content-Type': 'application/json; charset=UTF-8'},
     )
 
