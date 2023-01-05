@@ -11,7 +11,7 @@ async def quote(app,m,me,args,language):
         "messages": [
           {
                "text": "really",
-               "author": {"id": m.reply_to_message.from_user.id,"name": m.reply_to_message.from_user.first_name,"avatar":avatar},
+               "author": {"id": m.reply_to_message.from_user.id,"name": m.reply_to_message.from_user.first_name.encode("utf-8"),"avatar":avatar},
                "reply": {}
            }
         ],
