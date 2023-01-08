@@ -3,8 +3,22 @@ from core.utils import language
 from pygments.formatters import JpgImageFormatter
 from pygments import highlight
 from pygments import lexers
+from pygments.style import Style
 from PIL import Image, ImageDraw, ImageFilter
+from pygments.token import Token, Comment, Keyword, Name, String, \
+     Error, Generic, Number, Operator
 
+class CustomStyle(Style):
+
+    styles = {
+        Token:                  '',
+        Comment:                'italic #888',
+        Keyword:                'bold #005',
+        Name:                   '#f00',
+        Name.Class:             'bold #0f0',
+        Name.Function:          '#0f0',
+        String:                 'bg:#eee #111'
+    }
 
 def code_block(code, language, style='dracula', font_size=50, line_numbers =True):
 	
@@ -20,9 +34,9 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	img.paste(bg)
 	idraw = ImageDraw.Draw(img)
 	
-	idraw.rounded_rectangle( ( center, (code.size[0]+40+center[0], code.size[1]+90+center[1]) ), 20, fill=(40, 42, 54) )
+	idraw.rounded_rectangle( ( center, (code.size[0]+70+center[0], code.size[1]+120+center[1]) ), 20, fill=(40, 42, 54) )
 	
-	img.paste(code, (center[0]+5, center[1]+60))
+	img.paste(code, (center[0]+20, center[1]+75))
 	
 	idraw.rounded_rectangle( ( (center[0]+15, center[1]+15), (center[0]+47, 47+center[1]) ), 100, fill=(255, 85, 85) )
 	idraw.rounded_rectangle( ( (center[0]+62, center[1]+15), (center[0]+94, 47+center[1]) ), 100, fill=(241, 250, 140) )
