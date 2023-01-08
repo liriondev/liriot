@@ -17,6 +17,7 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	
 	img = Image.new('RGBA', (code.size[0]+500, code.size[1]+800))
 	bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
+	img.paste(bg)
 	idraw = ImageDraw.Draw(img)
 	
 	idraw.rounded_rectangle( ( center, (code.size[0]+40+center[0], code.size[1]+90+center[1]) ), 20, fill=(40, 42, 54) )
