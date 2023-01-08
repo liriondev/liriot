@@ -47,3 +47,4 @@ async def dev_module(app,m,me,args,language):
 		await m.edit('**Generation...**')
 		await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}', ''), args[1]))
 		await m.delete()
+		
