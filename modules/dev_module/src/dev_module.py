@@ -17,7 +17,7 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	
 	img = Image.new('RGBA', (code.size[0]+500, code.size[1]+800))
 	bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
-	img.paste(bg.filter(ImageFilter.BoxBlur(50)))
+	img.paste(bg.filter(ImageFilter.BoxBlur(10)))
 	idraw = ImageDraw.Draw(img)
 	
 	idraw.rounded_rectangle( ( center, (code.size[0]+40+center[0], code.size[1]+90+center[1]) ), 20, fill=(40, 42, 54) )
@@ -28,10 +28,15 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	idraw.rounded_rectangle( ( (center[0]+62, center[1]+15), (center[0]+94, 47+center[1]) ), 100, fill=(241, 250, 140) )
 	idraw.rounded_rectangle( ( (center[0]+109, center[1]+15), (center[0]+141, 47+center[1]) ), 100, fill=(80, 250, 123) )
 	
-	img.save('tmp.png')
+	tmp = io.BytesIO()
+	tmp.name = 'code'
+
+	img.save(tmp, format='PNG')
+
+	return tmp
 
 @language 
 async def dev_module(app,m,me,args,language):
 	
-	code_block(m.reply_to_message.text, args[1])
-	await app.send_document (m.chat.id, 'tmp.png')
+	if m.reply:
+		await app.send_document(m.chat.id, code_block(m.reply_to_message.text, args[1]))
