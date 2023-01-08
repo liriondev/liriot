@@ -40,9 +40,9 @@ async def dev_module(app,m,me,args,language):
 	
 	if m.reply:
 		await m.edit('**Generation...**')
-		await app.send_document(m.chat.id, code_block(m.reply_to_message.text, args[1]), reply_to_message=m.reply_to_message.message_id)
+		await app.send_document(m.chat.id, code_block(m.reply_to_message.text, args[1]), reply_to_message=m.reply_to_message.id)
 		await m.delete()
 	else:
 		await m.edit('**Generation...**')
-		try: await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}'), args[1]), reply_to_message=m.reply_to_message.message_id)
+		try: await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}'), args[1]), reply_to_message=m.reply_to_message.id)
 		except: await m.delete();await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}'), args[1]))
