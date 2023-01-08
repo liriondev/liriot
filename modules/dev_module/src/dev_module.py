@@ -8,18 +8,6 @@ from PIL import Image, ImageDraw, ImageFilter
 from pygments.token import Token, Comment, Keyword, Name, String, \
      Error, Generic, Number, Operator
 
-class CustomStyle(Style):
-
-    styles = {
-        Token:                  '',
-        Comment:                'italic #888',
-        Keyword:                'bold #005',
-        Name:                   '#f00',
-        Name.Class:             'bold #0f0',
-        Name.Function:          '#0f0',
-        String:                 'bg:#eee #111'
-    }
-
 def code_block(code, language, style='dracula', font_size=50, line_numbers =True):
 	
 	fmt = JpgImageFormatter(style=style, font_size=font_size, line_numbers=line_numbers, line_number_bg=(40, 42, 54), line_number_fg =(100, 100, 100))
@@ -29,9 +17,9 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	
 	center=int((code.size[0]+500-code.size[0]-10)/2), int((code.size[1]+800-code.size[1]-70)/2)
 	
-	img = Image.new('RGBA', (code.size[0]+500, code.size[1]+800))
+	img = Image.new('RGBA', (code.size[0]+500, code.size[1]+800), fill=(242,232,201,1))
 	bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
-	img.paste(bg)
+	# img.paste(bg)
 	idraw = ImageDraw.Draw(img)
 	
 	idraw.rounded_rectangle( ( center, (code.size[0]+70+center[0], code.size[1]+120+center[1]) ), 20, fill=(40, 42, 54) )
@@ -54,10 +42,10 @@ async def dev_module(app,m,me,args,language):
 	
 	if m.reply:
 		await m.edit('**Generation...**')
-		try:await app.send_document(m.chat.id, code_block(m.reply_to_message.text, args[1]), reply_to_message_id=m.reply_to_message.id)
-		except:await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}',''), args[1]), reply_to_message_id=m.reply_to_message.id)
+		try:await app.send_document(m.chat.id, code_block(m.reply_to_message.text, args[1], line_numbers=False), reply_to_message_id=m.reply_to_message.id)
+		except:await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}',''), args[1], line_numbers=False), reply_to_message_id=m.reply_to_message.id)
 		await m.delete()
 	else:
 		await m.edit('**Generation...**')
-		await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}', ''), args[1]))
+		await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}', ''), args[1], line_numbers=False))
 		await m.delete()
