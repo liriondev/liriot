@@ -29,7 +29,7 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	idraw.rounded_rectangle( ( (center[0]+109, center[1]+15), (center[0]+141, 47+center[1]) ), 100, fill=(80, 250, 123) )
 	
 	tmp = io.BytesIO()
-	tmp.name = 'code'
+	tmp.name = 'code.png'
 
 	img.save(tmp, format='PNG')
 
