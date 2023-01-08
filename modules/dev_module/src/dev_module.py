@@ -8,17 +8,17 @@ from PIL import Image, ImageDraw, ImageFilter
 from pygments.token import Token, Comment, Keyword, Name, String, \
      Error, Generic, Number, Operator
 
-def code_block(code, language, style='dracula', font_size=50, line_numbers =True):
+def code_block(code, language, style='github-dark', font_size=50, line_numbers =True):
 	
 	fmt = JpgImageFormatter(style=style, font_size=font_size, line_numbers=line_numbers, line_number_bg=(40, 42, 54), line_number_fg =(100, 100, 100))
 													
 	lex = lexers.get_lexer_by_name(language)
 	code = Image.open(io.BytesIO(highlight(code, lex,fmt)))
 	
-	center=int((code.size[0]+500-code.size[0]-10)/2), int((code.size[1]+800-code.size[1]-70)/2)
+	center=int((code.size[0]+500-code.size[0]-10)/2), int((code.size[1]+500-code.size[1]-70)/2)
 	
 	img = Image.new('RGB', (code.size[0]+500, code.size[1]+500), (242,232,201))
-	bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
+	# bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
 	# img.paste(bg)
 	idraw = ImageDraw.Draw(img)
 	
