@@ -17,7 +17,7 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	
 	center=int((code.size[0]+500-code.size[0]-10)/2), int((code.size[1]+800-code.size[1]-70)/2)
 	
-	img = Image.new('RGBA', (code.size[0]+500, code.size[1]+800), fill=(242,232,201,1))
+	img = Image.new('RGBA', (code.size[0]+500, code.size[1]+800), (242,232,201,1))
 	bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
 	# img.paste(bg)
 	idraw = ImageDraw.Draw(img)
