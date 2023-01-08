@@ -15,9 +15,9 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 	lex = lexers.get_lexer_by_name(language)
 	code = Image.open(io.BytesIO(highlight(code, lex,fmt)))
 	
-	center=int((code.size[0]+300-code.size[0]-10)/2), int((code.size[1]+300-code.size[1]-70)/2)
+	center=int((code.size[0]+300-code.size[0]-25)/2), int((code.size[1]+300-code.size[1]-95)/2)
 	
-	img = Image.new('RGB', (code.size[0]+300, code.size[1]+300), (242,232,201))
+	img = Image.new('RGB', (code.size[0]+300, code.size[1]+300), (175,238,238))
 	# bg=Image.open('modules/dev_module/src/bg.jpg').resize(img.size)
 	# img.paste(bg)
 	idraw = ImageDraw.Draw(img)
