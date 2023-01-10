@@ -40,7 +40,7 @@ def code_block(code, language, style='dracula', font_size=50, line_numbers =True
 @language 
 async def dev_module(app,m,me,args,language):
 	
-	if m.reply:
+	if m.reply_to_message:
 		await m.edit('**Generation...**')
 		try:await app.send_document(m.chat.id, code_block(m.reply_to_message.text, args[1], line_numbers=False), reply_to_message_id=m.reply_to_message.id)
 		except:await app.send_document(m.chat.id, code_block(m.text.replace(f'{args[0]} {args[1]}',''), args[1], line_numbers=False), reply_to_message_id=m.reply_to_message.id)
