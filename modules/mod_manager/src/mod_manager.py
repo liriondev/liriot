@@ -28,7 +28,29 @@ async def mod_manager(app,m,me,args,language):
 			await m.reply_to_message.download(file_name='modules_tar/', progress=progress_install)
 			await m.edit('**Unpacking...**')
 			with tarfile.open(f'modules_tar/{m.reply_to_message.document.file_name}') as so:
-				so.extractall(path='modules/')
+	
+	import os
+	
+	def is_within_directory(directory, target):
+		
+		abs_directory = os.path.abspath(directory)
+		abs_target = os.path.abspath(target)
+	
+		prefix = os.path.commonprefix([abs_directory, abs_target])
+		
+		return prefix == abs_directory
+	
+	def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+	
+		for member in tar.getmembers():
+			member_path = os.path.join(path, member.name)
+			if not is_within_directory(path, member_path):
+				raise Exception("Attempted Path Traversal in Tar File")
+	
+		tar.extractall(path, members, numeric_owner=numeric_owner) 
+		
+	
+	safe_extract(so, path="modules/")
 			if os.path.exists(f'mofules/{m.reply_to_message.document.file_name[-7:]}/requirements.txt'):
 				await m.edit('**Installing requirements...**')
 				pip.main(['install', '-r', f'mofules/{m.reply_to_message.document.file_name[-7:]}/requirements.txt'])
